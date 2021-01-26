@@ -1,0 +1,7 @@
+probability 0.01
+min points 284
+epsilon 0.05
+cluster epsilon 0.025
+normal deviation 0.9
+Cylinder 0 with axis [3.5533 0.190957 0.527873 3.54101 1.18904 0.467214] and radius 0.0844223
+Cylinder 1 with axis [3.57164 0.228853 0.583049 3.59789 -0.76465 0.472319] and radius 0.108772
