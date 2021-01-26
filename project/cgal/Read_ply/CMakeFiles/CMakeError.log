@@ -1,0 +1,63 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/ilaria/progetto/progetto_offset_assile/cgal/Read_ply/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_e18cb/fast && /usr/bin/make -f CMakeFiles/cmTC_e18cb.dir/build.make CMakeFiles/cmTC_e18cb.dir/build
+make[1]: Entering directory '/home/ilaria/progetto/progetto_offset_assile/cgal/Read_ply/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_e18cb.dir/src.c.o
+/usr/bin/cc   -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_e18cb.dir/src.c.o   -c /home/ilaria/progetto/progetto_offset_assile/cgal/Read_ply/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_e18cb
+/opt/cmake-3.15.2-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e18cb.dir/link.txt --verbose=1
+/usr/bin/cc  -DCMAKE_HAVE_LIBC_PTHREAD    -rdynamic CMakeFiles/cmTC_e18cb.dir/src.c.o  -o cmTC_e18cb 
+CMakeFiles/cmTC_e18cb.dir/src.c.o: In function `main':
+src.c:(.text+0x3c): undefined reference to `pthread_create'
+src.c:(.text+0x48): undefined reference to `pthread_detach'
+src.c:(.text+0x59): undefined reference to `pthread_join'
+src.c:(.text+0x6d): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_e18cb.dir/build.make:86: recipe for target 'cmTC_e18cb' failed
+make[1]: *** [cmTC_e18cb] Error 1
+make[1]: Leaving directory '/home/ilaria/progetto/progetto_offset_assile/cgal/Read_ply/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_e18cb/fast' failed
+make: *** [cmTC_e18cb/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/ilaria/progetto/progetto_offset_assile/cgal/Read_ply/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_23075/fast && /usr/bin/make -f CMakeFiles/cmTC_23075.dir/build.make CMakeFiles/cmTC_23075.dir/build
+make[1]: Entering directory '/home/ilaria/progetto/progetto_offset_assile/cgal/Read_ply/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_23075.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_23075.dir/CheckFunctionExists.c.o   -c /opt/cmake-3.15.2-Linux-x86_64/share/cmake-3.15/Modules/CheckFunctionExists.c
+Linking C executable cmTC_23075
+/opt/cmake-3.15.2-Linux-x86_64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_23075.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_23075.dir/CheckFunctionExists.c.o  -o cmTC_23075 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_23075.dir/build.make:86: recipe for target 'cmTC_23075' failed
+make[1]: *** [cmTC_23075] Error 1
+make[1]: Leaving directory '/home/ilaria/progetto/progetto_offset_assile/cgal/Read_ply/CMakeFiles/CMakeTmp'
+Makefile:121: recipe for target 'cmTC_23075/fast' failed
+make: *** [cmTC_23075/fast] Error 2
+
+
+
